@@ -109,4 +109,26 @@ class IndexPage extends React.Component {
   }
 }
 
-export default IndexPage
+export default IndexPage;
+
+export const fluidImage = graphql`
+fragment fluidImage on File {
+  childImageSharp {
+    fluid(maxWidth: 1000) {
+      ...GatsbyImageSharpFluid
+    }
+  }
+}
+`;
+export const pageQuery = graphql`
+  query {
+    imageOne: file(relativePath: { eq: "placeholder2.jpg" }) {
+      ...fluidImage
+    }
+    imageTwo: file(relativePath: { eq: "placeholder4.jpg" }) {
+      ...fluidImage
+    }
+    imageThree: file(relativePath: { eq: "placeholder5.jpg" }) {
+      ...fluidImage
+    }
+  }
